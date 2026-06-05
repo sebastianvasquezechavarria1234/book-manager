@@ -1,0 +1,131 @@
+﻿@model IEnumerable<book_manager.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn bg-blue-100 text-blue-700" asp-action="Create">Create New</a>
+</p>
+<table class="" id="example">
+    <thead class="border-b border-balck/30">
+        <tr class="">
+            <th class="w-[25%]  hover:bg-gray-100 py-[14px] px-[22px] rounded-[8px] cursor-pointer">
+                <p class="flex items-center gap-[10px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-az-icon lucide-arrow-down-a-z">
+                  <path d="m3 16 4 4 4-4" />
+                  <path d="M7 20V4" />
+                  <path d="M20 8h-5" />
+                  <path d="M15 10V6.5a2.5 2.5 0 0 1 5 0V10" />
+                  <path d="M15 14h5l-5 6h5" />
+                </svg>
+                    @Html.DisplayNameFor(model => model.Nombre)
+
+                </p>
+            </th>
+            <th class="w-[25%]">
+                @Html.DisplayNameFor(model => model.Especie)
+            </th>
+            <th class="w-[20%]">
+                @Html.DisplayNameFor(model => model.Edad)
+            </th>
+            <th class="w-[30%] py-[14px] px-[22px] rounded-[8px]">
+                <p>
+                    Acciones
+                </p>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                <a class="btn bg-blue-100 text-blue-700 inline-flex gap-[10px] items-center" asp-action="Edit" asp-route-id="@item.AnimalId">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-icon lucide-pencil">
+                      <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                      <path d="m15 5 4 4" />
+                    </svg>
+                    Edit
+                </a>
+                <a class="btn bg-green-100 text-green-700" asp-action="Details" asp-route-id="@item.AnimalId">Details</a>
+                <a class="btn bg-red-100 text-red-700" asp-action="Delete" asp-route-id="@item.AnimalId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+
+<script>
+    new DataTable('#example', {
+      // 1) DOM: coloca botones (B) y filtro (f) juntos con utilidades de Tailwind
+      dom: `<"flex justify-between items-center mb-4"
+              <"flex space-x-2 buttons"B>
+              <"flex items-center search"f>
+            >` +  // después viene la tabla (r,t) y paginación (i,p)
+            'rtip',
+
+      // 2) Botones con clases Tailwind
+      buttons: [
+        {
+          extend: 'copy',
+          text: 'Copiar',
+          className: 'btn bg-gray-100 text-gray-800'
+        },
+        {
+          extend: 'csv',
+          text: 'CSV',
+          className: 'btn bg-blue-100 text-blue-700'
+        },
+        {
+          extend: 'excel',
+          text: 'Excel',
+          className: 'btn bg-green-100 text-green-700'
+        },
+        {
+          extend: 'pdf',
+          text: 'PDF',
+          className: 'btn bg-red-100 text-red-700'
+        },
+        {
+          extend: 'print',
+          text: 'Imprimir',
+          className: 'btn bg-yellow-100 text-yellow-700'
+        }
+      ],
+
+      language: {
+        url: '//cdn.datatables.net/plug-ins/2.3.2/i18n/es-ES.json'
+      },
+
+      initComplete: function () {
+        // 3) Estilizar el input de búsqueda
+        const $input = $('#example_filter input');
+        $input
+          .addClass(
+            'bg-gray-100 border border-gray-300 rounded-lg px-3 py-2 ' +
+            'focus:outline-none focus:ring-2 focus:ring-blue-400'
+          )
+          .attr('placeholder', '🔍 Buscar…');
+
+        // 4) (Opcional) mover label y input al lado si quieres
+        $('#example_filter')
+          .addClass('flex items-center space-x-2');
+        $('#example_filter label')
+          .addClass('text-gray-700 font-medium mb-0');
+      }
+    });
+</script>
+
