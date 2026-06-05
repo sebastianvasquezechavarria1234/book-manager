@@ -56,6 +56,3 @@ dotnet build
 dotnet run
 ```
 
-## 🎓 About The Project
-
-This repository represents an exam/assessment focusing on the correct implementation of the **MVC Architecture Pattern**, **Dependency Injection**, routing, and **Database interactions** using Code-First/Database-First approaches in ASP.NET Core.
