@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ExamenMVC</title>
+
+    @* Fuentes de google font *@
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    @* Tailwinscss *@
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ExamenMVC.styles.css" asp-append-version="true" />
+
+ @* scrit *@
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.3/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.colVis.min.js"></script>
+
+    <style>
+        *{
+            font-family: "Red Hat Display", sans-serif;
+        }
+        h1{
+            font-size: 3rem!important
+        }
+        a, p, table{
+            font-size: 18px!important;
+            font-weight: 400;
+        }
+        .btn{
+            padding: 14px 22px;
+            border-radius: 8px;
+        }
+        #example_wrapper input[type="search"],
+        .dataTables_filter input,
+        .dt-search input {
+          background-color: #f7fafc !important;
+          border: 1px solid #d2d6dc !important;
+          border-radius: 0.5rem !important;
+          padding: 13px 21px!important;
+          outline: none !important;
+        }
+        /* Estilo del contenedor de paginación */
+.dataTables_wrapper .dataTables_paginate {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem; /* Tailwind text-sm */
+}
+
+/* Estilo de los botones de paginación */
+.dataTables_wrapper  .paginate_button {
+  background-color: #f3f4f6; /* gray-100 */
+  color: #1f2937;             /* gray-800 */
+  border: 1px solid #d1d5db;  /* gray-300 */
+  border-radius: 0.375rem;    /* rounded-md */
+  padding: 0.4rem 0.75rem;
+  margin: 0 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Hover */
+.dataTables_wrapper .paginate_button:hover {
+  background-color: #e5e7eb; /* gray-200 */
+}
+
+/* Botón actual (página activa) */
+.dataTables_wrapper .paginate_button.current {
+  background-color: #3b82f6; /* blue-500 */
+  color: white !important;
+  font-weight: bold;
+  border: 1px solid #2563eb; /* blue-600 */
+}
+
+/* Botón deshabilitado */
+.dataTables_wrapper .paginate_button.disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  border: 1px solid #d1d5db;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+    </style>
+</head>
+<body>
+    <header class="w-full p-[10px] border-b-1 border-black/30 shadow-md">
+        <nav class="w-full">
+            <div class="w-full flex items-center gap-[30px]">
+                <a class="c" asp-area="" asp-controller="Home" asp-action="Index">ExamenMVC</a>
+               
+                <div class="">
+                    <ul class="flex items-center gap-[10px]">
+                        <li class="">
+                            <a class="" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="">
+                            <a class="" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="">
+                            <a class="" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
+                        </li>
+                        <li class="">
+                            <a class="" asp-area="" asp-controller="Animales" asp-action="Index">Animales</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="">
+        <main role="main" class="max-w-[1200px] mx-auto px-[20px] mt-[120px]">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="text-center p-[20px] border-t-1 border-black/30">
+        <div class="">
+            &copy; 2025 - ExamenMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
