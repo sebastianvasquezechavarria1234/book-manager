@@ -53,7 +53,7 @@ namespace ExamenMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdAutor,Nombre,Apellido,Email,Nacionalidad")] Autore autore)
+        public async Task<IActionResult> Create([Bind("Nombre,Apellido,Email,Nacionalidad")] Autore autore)
         {
             if (ModelState.IsValid)
             {
