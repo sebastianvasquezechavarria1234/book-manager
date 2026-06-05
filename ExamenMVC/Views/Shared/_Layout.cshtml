@@ -15,9 +15,6 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ExamenMVC.styles.css" asp-append-version="true" />
-
- @* scripts *@
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/buttons/3.2.3/js/dataTables.buttons.js"></script>
     <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.dataTables.js"></script>
@@ -28,73 +25,6 @@
     <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.colVis.min.js"></script>
 
-    <style>
-        *{
-            font-family: "Red Hat Display", sans-serif;
-        }
-        h1{
-            font-size: 3rem!important
-        }
-        a, p, table{
-            font-size: 18px!important;
-            font-weight: 400;
-        }
-        .btn{
-            padding: 14px 22px;
-            border-radius: 8px;
-        }
-        #example_wrapper input[type="search"],
-        .dataTables_filter input,
-        .dt-search input {
-          background-color: #f7fafc !important;
-          border: 1px solid #d2d6dc !important;
-          border-radius: 0.5rem !important;
-          padding: 13px 21px!important;
-          outline: none !important;
-        }
-        /* Estilo del contenedor de paginación */
-.dataTables_wrapper .dataTables_paginate {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-  font-size: 0.875rem; /* Tailwind text-sm */
-}
-
-/* Estilo de los botones de paginación */
-.dataTables_wrapper  .paginate_button {
-  background-color: #f3f4f6; /* gray-100 */
-  color: #1f2937;             /* gray-800 */
-  border: 1px solid #d1d5db;  /* gray-300 */
-  border-radius: 0.375rem;    /* rounded-md */
-  padding: 0.4rem 0.75rem;
-  margin: 0 0.25rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-/* Hover */
-.dataTables_wrapper .paginate_button:hover {
-  background-color: #e5e7eb; /* gray-200 */
-}
-
-/* Botón actual (página activa) */
-.dataTables_wrapper .paginate_button.current {
-  background-color: #3b82f6; /* blue-500 */
-  color: white !important;
-  font-weight: bold;
-  border: 1px solid #2563eb; /* blue-600 */
-}
-
-/* Botón deshabilitado */
-.dataTables_wrapper .paginate_button.disabled {
-  background-color: #e5e7eb;
-  color: #9ca3af;
-  border: 1px solid #d1d5db;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-    </style>
 </head>
 <body>
     <header class="w-full p-[10px] border-b-1 border-black/30 shadow-md">
